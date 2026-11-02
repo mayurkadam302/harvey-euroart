@@ -1,0 +1,104 @@
+persona:
+  name: EuroArt Sales
+  company: EuroArt
+  role: Business Development
+  email: ''
+  linkedin: ''
+  tone: professional, consultative, confident
+product:
+  name: EuroArt EA digital locks
+  description: Battery-operated residential digital door locks (EA100-EA520) with
+    Wi-Fi, BLE and app, finished to match EuroArt architectural door hardware. Supplied
+    for residential and hospitality projects across the UAE.
+  pricing: Project pricing on request
+  key_benefits:
+  - Lock finish matched to EuroArt door hardware
+  - Wi-Fi, BLE and app access
+  - Battery operated, no door wiring
+  - Local UAE supply and support
+  objection_responses:
+    too expensive: I understand budget is important. Most of our clients see ROI within
+      30 days...
+    already have a solution: That makes sense. Curious — what's the one thing you
+      wish it did better?
+    not interested: No worries at all. Mind if I ask what your current approach looks
+      like?
+  offer:
+    primary: ''
+    entry: ''
+    goal: book_call
+    booking_method: calendar_link
+    booking_url: ''
+    meeting_duration: 15 minutes
+    meeting_owner: ''
+icp:
+  industries:
+  - construction contractor
+  - interior fit-out
+  - joinery
+  - door supplier
+  - hardware store
+  - locksmith
+  - architect
+  - interior design
+  company_size: 5-500 employees
+  titles:
+  - Managing Director
+  - Owner
+  - Procurement Manager
+  - Project Manager
+  - Estimation Manager
+  - Interior Designer
+  geography:
+  - Dubai, UAE
+  - Abu Dhabi, UAE
+  - Sharjah, UAE
+  - Ajman, UAE
+  - Ras Al Khaimah, UAE
+  hiring_signals: []
+  geo_coordinates:
+    Dubai, UAE: 25.2048,55.2708,40
+    Abu Dhabi, UAE: 24.4539,54.3773,40
+    Sharjah, UAE: 25.3463,55.4209,20
+    Ajman, UAE: 25.4052,55.5136,15
+    Ras Al Khaimah, UAE: 25.7895,55.9432,25
+channels:
+  email:
+    enabled: false
+    provider: gmail
+    max_daily_sends: 0
+    require_approval: true
+    send_to_risky: false
+    max_bounce_rate: 0.05
+    warmup:
+      start_date: ''
+      min_days: 14
+      start_sends: 5
+      daily_increase: 3
+      dkim_selector: ''
+    signature:
+      logo: ''
+      width: 120
+      alt: ''
+      link: ''
+      direction: auto
+  linkedin:
+    enabled: false
+    max_daily_connections: 20
+    max_daily_messages: 10
+usage:
+  max_daily_claude_percent: 80
+  heartbeat_interval_minutes: 15
+  quiet_hours:
+    start: '22:00'
+    end: 07:00
+    timezone: Asia/Dubai
+compliance:
+  postal_address: ''
+  opt_out_line: Not interested? Reply "no thanks" and I won't email again.
+  do_not_contact: []
+  precleared:
+    enabled: false
+    sender_country: ''
+    address_source: unknown
+    prospect_country: ''
