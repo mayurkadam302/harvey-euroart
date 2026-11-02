@@ -18,20 +18,25 @@ if (-not (Get-Command py -ErrorAction SilentlyContinue) -and -not (Get-Command p
 
 if (-not (Test-Path "harvey\.git")) {
     Write-Host "Downloading Harvey..."
-    git clone --quiet $HarveyRepo harvey
+    git clone --quiet -c core.autocrlf=false $HarveyRepo harvey
     if ($LASTEXITCODE -ne 0) { throw "git clone failed" }
     git -C harvey checkout --quiet $HarveyCommit
     if ($LASTEXITCODE -ne 0) { throw "git checkout failed" }
 }
 
-# Apply the UAE trade categories once (skipped if already applied)
+# Apply the UAE trade categories once (skipped if already applied).
+# Git's messages go to stderr, which Windows PowerShell treats as an error under "Stop", so relax it here.
+# --ignore-whitespace lets the patch apply to a checkout with Windows line endings.
 $patch = Join-Path $PSScriptRoot "osm-uae-trades.patch"
-git -C harvey apply --reverse --check $patch 2>$null
-if ($LASTEXITCODE -ne 0) {
+$ErrorActionPreference = "Continue"
+git -C harvey apply --ignore-whitespace --reverse --check $patch 2>&1 | Out-Null
+$alreadyApplied = ($LASTEXITCODE -eq 0)
+if (-not $alreadyApplied) {
     Write-Host "Adding UAE trade categories to the OpenStreetMap source..."
-    git -C harvey apply $patch
-    if ($LASTEXITCODE -ne 0) { throw "Could not apply osm-uae-trades.patch" }
+    git -C harvey apply --ignore-whitespace $patch
+    if ($LASTEXITCODE -ne 0) { Write-Host "Could not apply osm-uae-trades.patch"; exit 1 }
 }
+# Leave "Continue" on: the remaining steps are pip and Harvey, which also print notices to stderr.
 
 Copy-Item -Force "harvey.local.yaml" "harvey\harvey.local.yaml"
 Set-Location "harvey"
